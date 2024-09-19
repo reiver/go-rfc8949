@@ -65,6 +65,36 @@ const (
 	Int32                byte = majortype.NegativeInteger | (27 - 1)
 	Int64                byte = majortype.NegativeInteger | (28 - 1)
 
+	ByteStringLen0      byte = majortype.ByteString | 0
+	ByteStringLen1      byte = majortype.ByteString | 1
+	ByteStringLen2      byte = majortype.ByteString | 2
+	ByteStringLen3      byte = majortype.ByteString | 3
+	ByteStringLen4      byte = majortype.ByteString | 4
+	ByteStringLen5      byte = majortype.ByteString | 5
+	ByteStringLen6      byte = majortype.ByteString | 6
+	ByteStringLen7      byte = majortype.ByteString | 7
+	ByteStringLen8      byte = majortype.ByteString | 8
+	ByteStringLen9      byte = majortype.ByteString | 9
+	ByteStringLen10     byte = majortype.ByteString | 10
+	ByteStringLen11     byte = majortype.ByteString | 11
+	ByteStringLen12     byte = majortype.ByteString | 12
+	ByteStringLen13     byte = majortype.ByteString | 13
+	ByteStringLen14     byte = majortype.ByteString | 14
+	ByteStringLen15     byte = majortype.ByteString | 15
+	ByteStringLen16     byte = majortype.ByteString | 16
+	ByteStringLen17     byte = majortype.ByteString | 17
+	ByteStringLen18     byte = majortype.ByteString | 18
+	ByteStringLen19     byte = majortype.ByteString | 19
+	ByteStringLen20     byte = majortype.ByteString | 20
+	ByteStringLen21     byte = majortype.ByteString | 21
+	ByteStringLen22     byte = majortype.ByteString | 22
+	ByteStringLen23     byte = majortype.ByteString | 23
+
+	ByteStringLenUint8  byte = majortype.ByteString | 24
+	ByteStringLenUint16 byte = majortype.ByteString | 25
+	ByteStringLenUint32 byte = majortype.ByteString | 26
+	ByteStringLenUint64 byte = majortype.ByteString | 27
+
 	False     byte = majortype.SimpleValue | 20
 	True      byte = majortype.SimpleValue | 21
 	Null      byte = majortype.SimpleValue | 22
