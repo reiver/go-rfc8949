@@ -22,7 +22,7 @@ func Marshal(value int32) ([]byte, error) {
 			byte((x & 0xFF_00_00_00) >> (8*3)),
 			byte((x & 0x00_FF_00_00) >> (8*2)),
 			byte((x & 0x00_00_FF_00) >> (8*1)),
-			byte((x & 0x00_00_00_FF)     ),
+			byte((x & 0x00_00_00_FF)         ),
 		}, nil
 	}
 }
