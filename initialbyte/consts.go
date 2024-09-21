@@ -1,6 +1,7 @@
 package initialbyte
 
 import (
+	"github.com/reiver/go-rfc8949/initialbyte/additionalinfo"
 	"github.com/reiver/go-rfc8949/majortype"
 )
 
@@ -30,10 +31,10 @@ const (
 	UnsignedInteger22 byte = majortype.UnsignedInteger | 22
 	UnsignedInteger23 byte = majortype.UnsignedInteger | 23
 
-	Uint8             byte = majortype.UnsignedInteger | 24
-	Uint16            byte = majortype.UnsignedInteger | 25
-	Uint32            byte = majortype.UnsignedInteger | 26
-	Uint64            byte = majortype.UnsignedInteger | 27
+	Uint8             byte = majortype.UnsignedInteger | additionalinfo.Uint8
+	Uint16            byte = majortype.UnsignedInteger | additionalinfo.Uint16
+	Uint32            byte = majortype.UnsignedInteger | additionalinfo.Uint32
+	Uint64            byte = majortype.UnsignedInteger | additionalinfo.Uint64
 
 	NegativeIntegerNeg1  byte = majortype.NegativeInteger | (1  - 1)
 	NegativeIntegerNeg2  byte = majortype.NegativeInteger | (2  - 1)
@@ -60,10 +61,10 @@ const (
 	NegativeIntegerNeg23 byte = majortype.NegativeInteger | (23 - 1)
 	NegativeIntegerNeg24 byte = majortype.NegativeInteger | (24 - 1)
 
-	Int8                 byte = majortype.NegativeInteger | (25 - 1)
-	Int16                byte = majortype.NegativeInteger | (26 - 1)
-	Int32                byte = majortype.NegativeInteger | (27 - 1)
-	Int64                byte = majortype.NegativeInteger | (28 - 1)
+	Int8                 byte = majortype.NegativeInteger | additionalinfo.Uint8
+	Int16                byte = majortype.NegativeInteger | additionalinfo.Uint16
+	Int32                byte = majortype.NegativeInteger | additionalinfo.Uint32
+	Int64                byte = majortype.NegativeInteger | additionalinfo.Uint64
 
 	ByteStringLen0      byte = majortype.ByteString | 0
 	ByteStringLen1      byte = majortype.ByteString | 1
@@ -90,10 +91,10 @@ const (
 	ByteStringLen22     byte = majortype.ByteString | 22
 	ByteStringLen23     byte = majortype.ByteString | 23
 
-	ByteStringLenUint8  byte = majortype.ByteString | 24
-	ByteStringLenUint16 byte = majortype.ByteString | 25
-	ByteStringLenUint32 byte = majortype.ByteString | 26
-	ByteStringLenUint64 byte = majortype.ByteString | 27
+	ByteStringLenUint8  byte = majortype.ByteString | additionalinfo.Uint8
+	ByteStringLenUint16 byte = majortype.ByteString | additionalinfo.Uint16
+	ByteStringLenUint32 byte = majortype.ByteString | additionalinfo.Uint32
+	ByteStringLenUint64 byte = majortype.ByteString | additionalinfo.Uint64
 
 	False     byte = majortype.SimpleValue | 20
 	True      byte = majortype.SimpleValue | 21
