@@ -109,7 +109,7 @@ func TestMarshal(t *testing.T) {
 			Expected: append(
 				[]byte{
 					0xd9, 0x01, 0x1c, // tag 284
-					0x78, 0x1d,       // text string, length 29 (1-byte length)
+					0x78, 0x1e,       // text string, length 30 (1-byte length)
 				},
 				[]byte("99999999999999999999.123456789")...,
 			),
