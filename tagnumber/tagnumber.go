@@ -29,6 +29,7 @@ const (
 	IPv4             uint64 = 52    // IPv4 address with optional prefix
 	IPv6             uint64 = 54    // IPv6 address with optional prefix
 	DaysSinceEpoch   uint64 = 100   // Days since 1970-01-01
+	EmbeddedJSON     uint64 = 262   // Embedded JSON object (byte string)
 	HexString        uint64 = 263   // Hexadecimal string (byte string, display as hex)
 	FullDate         uint64 = 1004  // RFC 3339 full-date string
 
