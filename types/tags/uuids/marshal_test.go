@@ -1,0 +1,90 @@
+package uuids_test
+
+import (
+	"testing"
+
+	"bytes"
+
+	"github.com/reiver/go-rfc8949/types/tags/uuids"
+)
+
+func TestMarshal(t *testing.T) {
+
+	tests := []struct{
+		Value    [16]byte
+		Expected []byte
+	}{
+		// Nil UUID (all zeros).
+		{
+			Value: [16]byte{},
+			Expected: []byte{
+				0xd8, 0x25,
+				0x50,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+			},
+		},
+
+
+
+		// UUID v4 example: 550e8400-e29b-41d4-a716-446655440000
+		{
+			Value: [16]byte{
+				0x55, 0x0e, 0x84, 0x00,
+				0xe2, 0x9b,
+				0x41, 0xd4,
+				0xa7, 0x16,
+				0x44, 0x66, 0x55, 0x44, 0x00, 0x00,
+			},
+			Expected: []byte{
+				0xd8, 0x25,
+				0x50,
+				0x55, 0x0e, 0x84, 0x00,
+				0xe2, 0x9b,
+				0x41, 0xd4,
+				0xa7, 0x16,
+				0x44, 0x66, 0x55, 0x44, 0x00, 0x00,
+			},
+		},
+
+
+
+		// All 0xFF bytes.
+		{
+			Value: [16]byte{
+				0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+				0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+			},
+			Expected: []byte{
+				0xd8, 0x25,
+				0x50,
+				0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+				0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+			},
+		},
+	}
+
+	for testNumber, test := range tests {
+
+		actual, err := uuids.Marshal(test.Value)
+
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error but actually got one.", testNumber)
+			t.Logf("ERROR: (%T) %s", err, err)
+			t.Logf("VALUE: %x", test.Value)
+			continue
+		}
+
+		{
+			expected := test.Expected
+
+			if !bytes.Equal(expected, actual) {
+				t.Errorf("For test #%d, the actual cbor-marshaled bytes is not what was expected.", testNumber)
+				t.Logf("EXPECTED: (len=%d) %#v", len(expected), expected)
+				t.Logf("ACTUAL:   (len=%d) %#v", len(actual),   actual)
+				t.Logf("VALUE: %x", test.Value)
+				continue
+			}
+		}
+	}
+}
