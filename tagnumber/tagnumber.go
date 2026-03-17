@@ -31,6 +31,7 @@ const (
 	DaysSinceEpoch   uint64 = 100   // Days since 1970-01-01
 	EmbeddedJSON     uint64 = 262   // Embedded JSON object (byte string)
 	HexString        uint64 = 263   // Hexadecimal string (byte string, display as hex)
+	JSONNumber       uint64 = 284   // JSON numeric value as text string
 	FullDate         uint64 = 1004  // RFC 3339 full-date string
 
 	// RFC 8949 Section 3.4.6.
