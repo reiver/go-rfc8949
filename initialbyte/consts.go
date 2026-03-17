@@ -126,6 +126,36 @@ const (
 	TextStringLenUint32 byte = majortype.TextString | additionalinfo.Uint32
 	TextStringLenUint64 byte = majortype.TextString | additionalinfo.Uint64
 
+	ArrayLen0      byte = majortype.Array | 0
+	ArrayLen1      byte = majortype.Array | 1
+	ArrayLen2      byte = majortype.Array | 2
+	ArrayLen3      byte = majortype.Array | 3
+	ArrayLen4      byte = majortype.Array | 4
+	ArrayLen5      byte = majortype.Array | 5
+	ArrayLen6      byte = majortype.Array | 6
+	ArrayLen7      byte = majortype.Array | 7
+	ArrayLen8      byte = majortype.Array | 8
+	ArrayLen9      byte = majortype.Array | 9
+	ArrayLen10     byte = majortype.Array | 10
+	ArrayLen11     byte = majortype.Array | 11
+	ArrayLen12     byte = majortype.Array | 12
+	ArrayLen13     byte = majortype.Array | 13
+	ArrayLen14     byte = majortype.Array | 14
+	ArrayLen15     byte = majortype.Array | 15
+	ArrayLen16     byte = majortype.Array | 16
+	ArrayLen17     byte = majortype.Array | 17
+	ArrayLen18     byte = majortype.Array | 18
+	ArrayLen19     byte = majortype.Array | 19
+	ArrayLen20     byte = majortype.Array | 20
+	ArrayLen21     byte = majortype.Array | 21
+	ArrayLen22     byte = majortype.Array | 22
+	ArrayLen23     byte = majortype.Array | 23
+
+	ArrayLenUint8  byte = majortype.Array | additionalinfo.Uint8
+	ArrayLenUint16 byte = majortype.Array | additionalinfo.Uint16
+	ArrayLenUint32 byte = majortype.Array | additionalinfo.Uint32
+	ArrayLenUint64 byte = majortype.Array | additionalinfo.Uint64
+
 	False     byte = majortype.SimpleValue | 20
 	True      byte = majortype.SimpleValue | 21
 	Null      byte = majortype.SimpleValue | 22
