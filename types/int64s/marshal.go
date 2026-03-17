@@ -12,8 +12,18 @@ func Marshal(value int64) ([]byte, error) {
 		return uint64s.Marshal(uint64(value))
 	}
 
-	if -4294967296 <= value {
+	if -2147483648 <= value {
 		return int32s.Marshal(int32(value))
+	}
+
+	if -4294967296 <= value {
+		var x uint32 = uint32((value + 1)*-1)
+		return []byte{initialbyte.Int32,
+			byte((x & 0xFF_00_00_00) >> (8*3)),
+			byte((x & 0x00_FF_00_00) >> (8*2)),
+			byte((x & 0x00_00_FF_00) >> (8*1)),
+			byte((x & 0x00_00_00_FF)         ),
+		}, nil
 	}
 
 	{
