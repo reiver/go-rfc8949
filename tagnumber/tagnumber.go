@@ -33,6 +33,7 @@ const (
 	HexString        uint64 = 263   // Hexadecimal string (byte string, display as hex)
 	JSONNumber       uint64 = 284   // JSON numeric value as text string
 	FullDate         uint64 = 1004  // RFC 3339 full-date string
+	CBORLD           uint64 = 51997 // CBOR-LD (compressed JSON-LD)
 
 	// RFC 8949 Section 3.4.6.
 	SelfDescribedCBOR uint64 = 55799 // Self-described CBOR
