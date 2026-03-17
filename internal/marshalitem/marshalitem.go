@@ -72,7 +72,7 @@ func MarshalItem(item any) ([]byte, error) {
 	}
 }
 
-func MarshalArray(value []any) ([]byte, error) {
+func MarshalArray[T any](value []T) ([]byte, error) {
 
 	length := len(value)
 
