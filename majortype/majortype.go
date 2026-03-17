@@ -1,5 +1,98 @@
+/*
+Package majortype provide tools for working with CBOR major types.
+
+# CBOR versus JSON
+
+Sometimes CBOR is called a binary JSON.
+
+There is some truth to that, but — there are also a lot of differences between CBOR and JSON.
+
+CBOR and JSON are similar in that — they are both ways of represents hierarchical key-value pairs.
+
+But, CBOR has different basic-types than JSON.
+
+# CBOR 3-Bit Major Types
+
+CBOR uses a 3-bits to represent the "Major Type".
+The Major Type is at the start of every data item.
+
+3-Bits allows for 8 major categories.
+(Since 2³ = 8.)
+
+# Major Types
+
+These are the CBOR Major Types:
+
+	┌──────┬─────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────┐
+	│ Type │                    Name                     │                                    Description                                    │
+	├──────┼─────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────┤
+	│  0   │              Unsigned Integer               │               An unsigned integer in the range 0..2⁶⁴-1 inclusive.                │
+	│  1   │              Negative Integer               │                A negative integer in the range -2⁶⁴..-1 inclusive.                │
+	│  2   │                 Byte String                 │            The number of bytes in the string is equal to the argument.            │
+	│  3   │                 Text String                 │           A text string (Section 2) encoded as Unicode UTF-8 (RFC3629).           │
+	│  4   │                    Array                    │                              An array of data items.                              │
+	│  5   │                     Map                     │                           A map of pairs of data items.                           │
+	│  6   │                 Tagged Item                 │ Provides optional semantic "tags" for the following item (e.g., date/time, URI).  │
+	│  7   │ Simple / Floating-Point / "Break" Stop Code │ Used for "simple" values (true, false, null) and IEEE 754 floating-point numbers. │
+	└──────┴─────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────┘
+
+# How Encoding Works
+
+Each CBOR data item starts with an initial byte.
+
+	• The high-order 3 bits represent the Major Type.
+	• The low-order 5 bits (Additional Information) either represent the value itself (if it's small, 0–23) or indicate how many following bytes contain the value (24–27).
+
+I.e., the type and the length are often packed into the first byte.
+*/
 package majortype
 
+// MajorTypeFromInitialByte returns the Major Type from the initial byte.
+//
+// To determine what the Major Type actually is, used the following functions:
+// [IsUnsignedInteger],
+// [IsNegativeInteger],
+// [IsByteString],
+// [IsTextString],
+// [IsArray],
+// [IsMap],
+// [IsTagged],
+// [CouldBeFloatingPoint],
+// [CouldBeSimpleValue],
+// [CouldBeBreakStopCode].
+//
+// For example:
+//
+//	var initialByte byte // = ...
+//	
+//	majorType := majortype.MajorTypeFromInitialByte(initialByte)
+//	
+//	// ...
+//	
+//	switch {
+//	case IsUnsignedInteger(majorType):
+//		//@TODO
+//	case IsNegativeInteger(majorType):
+//		//@TODO
+//	case IsByteString(majorType):
+//		//@TODO
+//	case IsTextString(majorType):
+//		//@TODO
+//	case IsArray(majorType):
+//		//@TODO
+//	case IsMap(majorType):
+//		//@TODO
+//	case IsTagged(majorType):
+//		//@TODO
+//	case CouldBeFloatingPoint(majorType):
+//		//@TODO
+//	case CouldBeSimpleValue(majorType):
+//		//@TODO
+//	case CouldBeBreakStopCode(majorType):
+//		//@TODO
+//	default:
+//		//@TODO
+//	}
 func MajorTypeFromInitialByte(b byte) byte {
 	return (b & 0b111_00000)
 }
