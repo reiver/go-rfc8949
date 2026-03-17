@@ -186,6 +186,36 @@ const (
 	MapLenUint32 byte = majortype.Map | additionalinfo.Uint32
 	MapLenUint64 byte = majortype.Map | additionalinfo.Uint64
 
+	TagNum0      byte = majortype.Tagged | 0
+	TagNum1      byte = majortype.Tagged | 1
+	TagNum2      byte = majortype.Tagged | 2
+	TagNum3      byte = majortype.Tagged | 3
+	TagNum4      byte = majortype.Tagged | 4
+	TagNum5      byte = majortype.Tagged | 5
+	TagNum6      byte = majortype.Tagged | 6
+	TagNum7      byte = majortype.Tagged | 7
+	TagNum8      byte = majortype.Tagged | 8
+	TagNum9      byte = majortype.Tagged | 9
+	TagNum10     byte = majortype.Tagged | 10
+	TagNum11     byte = majortype.Tagged | 11
+	TagNum12     byte = majortype.Tagged | 12
+	TagNum13     byte = majortype.Tagged | 13
+	TagNum14     byte = majortype.Tagged | 14
+	TagNum15     byte = majortype.Tagged | 15
+	TagNum16     byte = majortype.Tagged | 16
+	TagNum17     byte = majortype.Tagged | 17
+	TagNum18     byte = majortype.Tagged | 18
+	TagNum19     byte = majortype.Tagged | 19
+	TagNum20     byte = majortype.Tagged | 20
+	TagNum21     byte = majortype.Tagged | 21
+	TagNum22     byte = majortype.Tagged | 22
+	TagNum23     byte = majortype.Tagged | 23
+
+	TagNumUint8  byte = majortype.Tagged | additionalinfo.Uint8
+	TagNumUint16 byte = majortype.Tagged | additionalinfo.Uint16
+	TagNumUint32 byte = majortype.Tagged | additionalinfo.Uint32
+	TagNumUint64 byte = majortype.Tagged | additionalinfo.Uint64
+
 	False     byte = majortype.SimpleValue | 20
 	True      byte = majortype.SimpleValue | 21
 	Null      byte = majortype.SimpleValue | 22
