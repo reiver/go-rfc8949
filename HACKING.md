@@ -45,8 +45,23 @@ The library models CBOR's byte-level encoding structure as separate Go packages:
 
 - **`prefix/`** — `Prefix(majorType, length)` builds the variable-length CBOR prefix bytes (initial byte + 0/1/2/4/8 argument bytes) based on value size.
 
+- **`tagnumber/`** — Constants for well-known CBOR tag numbers from RFC 8949 and the IANA CBOR Tags registry (e.g., `DateTime=0`, `Epoch=1`, `URI=32`, `BinaryUUID=37`, `IPv4=52`, `IPv6=54`, `SelfDescribedCBOR=55799`).
+
 - **`types/`** — Per-type `Marshal()` functions that produce CBOR byte output:
   - `bools/`, `nils/`, `uint8s/`, `uint16s/`, `uint32s/`, `uint64s/`, `int8s/`, `int16s/`, `int32s/`, `int64s/`
+  - `textstrings/` — CBOR text strings (major type 3) with UTF-8 validation.
+  - `bytestrings/` — CBOR byte strings (major type 2).
+  - `arrays/` — CBOR arrays.
+  - `maps/` — CBOR maps with deterministic key ordering (RFC 8949 §4.2.1). Supports `map[any]any` and `map[string]any`.
+  - `tags/` — CBOR tagged data items (major type 6). `Marshal(tagNumber, content)` wraps content in a tag.
+    - `tags/datetimes/` — Tag 0: RFC 3339 date/time strings from `time.Time`.
+    - `tags/epochs/` — Tag 1: Unix epoch seconds from `time.Time`.
+    - `tags/ipv4s/` — Tag 52: IPv4 addresses and prefixes from `netip.Addr`/`netip.Prefix` (RFC 9164).
+    - `tags/ipv6s/` — Tag 54: IPv6 addresses and prefixes from `netip.Addr`/`netip.Prefix` (RFC 9164).
+    - `tags/uris/` — Tag 32: URIs from `*url.URL`.
+    - `tags/uuids/` — Tag 37: Binary UUIDs from `[16]byte`.
+
+- **`internal/marshalitem/`** — Internal marshaling dispatcher. Routes Go values to type-specific marshal functions, handles recursive collections (arrays, maps), and implements deterministic map key ordering.
 
 - **`xtype/undefined/`** — Marshal for CBOR's "undefined" simple value (not present in Go's type system).
 
