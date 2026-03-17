@@ -16,6 +16,14 @@ func Marshal(value int32) ([]byte, error) {
 		return int16s.Marshal(int16(value))
 	}
 
+	if -65536 <= value {
+		var x uint16 = uint16((value + 1)*-1)
+		return []byte{initialbyte.Int16,
+			byte((x & 0xFF_00) >> 8),
+			byte((x & 0x00_FF)     ),
+		}, nil
+	}
+
 	{
 		var x uint32 = uint32((value + 1)*-1)
 		return []byte{initialbyte.Int32,
