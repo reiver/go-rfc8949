@@ -25,6 +25,7 @@ const (
 
 	// IANA CBOR Tags registry.
 	BinaryUUID       uint64 = 37    // Binary UUID (16-byte byte string)
+	Identifier       uint64 = 39    // Identifier (value is an ID, not for arithmetic)
 	IPv4             uint64 = 52    // IPv4 address with optional prefix
 	IPv6             uint64 = 54    // IPv6 address with optional prefix
 	DaysSinceEpoch   uint64 = 100   // Days since 1970-01-01
