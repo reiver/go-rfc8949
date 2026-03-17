@@ -156,6 +156,36 @@ const (
 	ArrayLenUint32 byte = majortype.Array | additionalinfo.Uint32
 	ArrayLenUint64 byte = majortype.Array | additionalinfo.Uint64
 
+	MapLen0      byte = majortype.Map | 0
+	MapLen1      byte = majortype.Map | 1
+	MapLen2      byte = majortype.Map | 2
+	MapLen3      byte = majortype.Map | 3
+	MapLen4      byte = majortype.Map | 4
+	MapLen5      byte = majortype.Map | 5
+	MapLen6      byte = majortype.Map | 6
+	MapLen7      byte = majortype.Map | 7
+	MapLen8      byte = majortype.Map | 8
+	MapLen9      byte = majortype.Map | 9
+	MapLen10     byte = majortype.Map | 10
+	MapLen11     byte = majortype.Map | 11
+	MapLen12     byte = majortype.Map | 12
+	MapLen13     byte = majortype.Map | 13
+	MapLen14     byte = majortype.Map | 14
+	MapLen15     byte = majortype.Map | 15
+	MapLen16     byte = majortype.Map | 16
+	MapLen17     byte = majortype.Map | 17
+	MapLen18     byte = majortype.Map | 18
+	MapLen19     byte = majortype.Map | 19
+	MapLen20     byte = majortype.Map | 20
+	MapLen21     byte = majortype.Map | 21
+	MapLen22     byte = majortype.Map | 22
+	MapLen23     byte = majortype.Map | 23
+
+	MapLenUint8  byte = majortype.Map | additionalinfo.Uint8
+	MapLenUint16 byte = majortype.Map | additionalinfo.Uint16
+	MapLenUint32 byte = majortype.Map | additionalinfo.Uint32
+	MapLenUint64 byte = majortype.Map | additionalinfo.Uint64
+
 	False     byte = majortype.SimpleValue | 20
 	True      byte = majortype.SimpleValue | 21
 	Null      byte = majortype.SimpleValue | 22
