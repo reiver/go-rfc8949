@@ -96,6 +96,36 @@ const (
 	ByteStringLenUint32 byte = majortype.ByteString | additionalinfo.Uint32
 	ByteStringLenUint64 byte = majortype.ByteString | additionalinfo.Uint64
 
+	TextStringLen0      byte = majortype.TextString | 0
+	TextStringLen1      byte = majortype.TextString | 1
+	TextStringLen2      byte = majortype.TextString | 2
+	TextStringLen3      byte = majortype.TextString | 3
+	TextStringLen4      byte = majortype.TextString | 4
+	TextStringLen5      byte = majortype.TextString | 5
+	TextStringLen6      byte = majortype.TextString | 6
+	TextStringLen7      byte = majortype.TextString | 7
+	TextStringLen8      byte = majortype.TextString | 8
+	TextStringLen9      byte = majortype.TextString | 9
+	TextStringLen10     byte = majortype.TextString | 10
+	TextStringLen11     byte = majortype.TextString | 11
+	TextStringLen12     byte = majortype.TextString | 12
+	TextStringLen13     byte = majortype.TextString | 13
+	TextStringLen14     byte = majortype.TextString | 14
+	TextStringLen15     byte = majortype.TextString | 15
+	TextStringLen16     byte = majortype.TextString | 16
+	TextStringLen17     byte = majortype.TextString | 17
+	TextStringLen18     byte = majortype.TextString | 18
+	TextStringLen19     byte = majortype.TextString | 19
+	TextStringLen20     byte = majortype.TextString | 20
+	TextStringLen21     byte = majortype.TextString | 21
+	TextStringLen22     byte = majortype.TextString | 22
+	TextStringLen23     byte = majortype.TextString | 23
+
+	TextStringLenUint8  byte = majortype.TextString | additionalinfo.Uint8
+	TextStringLenUint16 byte = majortype.TextString | additionalinfo.Uint16
+	TextStringLenUint32 byte = majortype.TextString | additionalinfo.Uint32
+	TextStringLenUint64 byte = majortype.TextString | additionalinfo.Uint64
+
 	False     byte = majortype.SimpleValue | 20
 	True      byte = majortype.SimpleValue | 21
 	Null      byte = majortype.SimpleValue | 22
