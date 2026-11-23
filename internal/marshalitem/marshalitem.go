@@ -2,8 +2,9 @@ package marshalitem
 
 import (
 	"bytes"
-	"fmt"
 	"sort"
+
+	"codeberg.org/reiver/go-erorr"
 
 	"github.com/reiver/go-rfc8949/initialbyte"
 	"github.com/reiver/go-rfc8949/types/bools"
@@ -68,7 +69,7 @@ func MarshalItem(item any) ([]byte, error) {
 		return MarshalMapStringKeys(v)
 
 	default:
-		return nil, fmt.Errorf("rfc8949: unsupported type: %T", item)
+		return nil, erorr.Errorf("rfc8949: unsupported type: %T", item)
 	}
 }
 
@@ -165,7 +166,7 @@ func MarshalArray[T any](value []T) ([]byte, error) {
 	for i, item := range value {
 		encoded, err := MarshalItem(item)
 		if nil != err {
-			return nil, fmt.Errorf("rfc8949: array item [%d]: %w", i, err)
+			return nil, erorr.Errorf("rfc8949: array item [%d]: %w", i, err)
 		}
 		result = append(result, encoded...)
 	}
@@ -281,12 +282,12 @@ func MarshalMap(value map[any]any) ([]byte, error) {
 	for k, v := range value {
 		encodedKey, err := MarshalItem(k)
 		if nil != err {
-			return nil, fmt.Errorf("rfc8949: map key: %w", err)
+			return nil, erorr.Errorf("rfc8949: map key: %w", err)
 		}
 
 		encodedValue, err := MarshalItem(v)
 		if nil != err {
-			return nil, fmt.Errorf("rfc8949: map value: %w", err)
+			return nil, erorr.Errorf("rfc8949: map value: %w", err)
 		}
 
 		pairs = append(pairs, encodedPair{
@@ -321,12 +322,12 @@ func MarshalMapStringKeys(value map[string]any) ([]byte, error) {
 	for k, v := range value {
 		encodedKey, err := textstrings.Marshal(k)
 		if nil != err {
-			return nil, fmt.Errorf("rfc8949: map key: %w", err)
+			return nil, erorr.Errorf("rfc8949: map key: %w", err)
 		}
 
 		encodedValue, err := MarshalItem(v)
 		if nil != err {
-			return nil, fmt.Errorf("rfc8949: map value for key %q: %w", k, err)
+			return nil, erorr.Errorf("rfc8949: map value for key %q: %w", k, err)
 		}
 
 		pairs = append(pairs, encodedPair{

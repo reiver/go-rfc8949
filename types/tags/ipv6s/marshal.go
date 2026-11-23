@@ -1,8 +1,9 @@
 package ipv6s
 
 import (
-	"fmt"
 	"net/netip"
+
+	"codeberg.org/reiver/go-erorr"
 
 	"github.com/reiver/go-rfc8949/tagnumber"
 	"github.com/reiver/go-rfc8949/types/tags"
@@ -19,11 +20,11 @@ import (
 func Marshal(value netip.Addr) ([]byte, error) {
 
 	if !value.IsValid() {
-		return nil, fmt.Errorf("rfc8949: invalid netip.Addr")
+		return nil, erorr.Errorf("rfc8949: invalid netip.Addr")
 	}
 
 	if value.Is4() {
-		return nil, fmt.Errorf("rfc8949: IPv4 address passed to IPv6 marshal (tag 54); use tag 52 for IPv4")
+		return nil, erorr.Errorf("rfc8949: IPv4 address passed to IPv6 marshal (tag 54); use tag 52 for IPv4")
 	}
 
 	addr := value.As16()
@@ -42,11 +43,11 @@ func Marshal(value netip.Addr) ([]byte, error) {
 func MarshalPrefix(value netip.Prefix) ([]byte, error) {
 
 	if !value.IsValid() {
-		return nil, fmt.Errorf("rfc8949: invalid netip.Prefix")
+		return nil, erorr.Errorf("rfc8949: invalid netip.Prefix")
 	}
 
 	if value.Addr().Is4() {
-		return nil, fmt.Errorf("rfc8949: IPv4 prefix passed to IPv6 marshal (tag 54); use tag 52 for IPv4")
+		return nil, erorr.Errorf("rfc8949: IPv4 prefix passed to IPv6 marshal (tag 54); use tag 52 for IPv4")
 	}
 
 	addr := value.Addr().As16()

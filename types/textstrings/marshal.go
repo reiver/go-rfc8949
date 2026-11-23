@@ -1,8 +1,9 @@
 package textstrings
 
 import (
-	"fmt"
 	"unicode/utf8"
+
+	"codeberg.org/reiver/go-erorr"
 
 	"github.com/reiver/go-rfc8949/initialbyte"
 )
@@ -10,7 +11,7 @@ import (
 func Marshal(value string) ([]byte, error) {
 
 	if !utf8.ValidString(value) {
-		return nil, fmt.Errorf("rfc8949: text string is not valid UTF-8")
+		return nil, erorr.Errorf("rfc8949: text string is not valid UTF-8")
 	}
 
 	var content []byte = []byte(value)

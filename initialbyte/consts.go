@@ -220,4 +220,8 @@ const (
 	True      byte = majortype.SimpleValue | 21
 	Null      byte = majortype.SimpleValue | 22
 	Undefined byte = majortype.SimpleValue | 23
+
+	Float16   byte = majortype.FloatingPoint | additionalinfo.Uint16 // IEEE 754 half-precision
+	Float32   byte = majortype.FloatingPoint | additionalinfo.Uint32 // IEEE 754 single-precision
+	Float64   byte = majortype.FloatingPoint | additionalinfo.Uint64 // IEEE 754 double-precision
 )

@@ -1,8 +1,9 @@
 package uris
 
 import (
-	"fmt"
 	"net/url"
+
+	"codeberg.org/reiver/go-erorr"
 
 	"github.com/reiver/go-rfc8949/tagnumber"
 	"github.com/reiver/go-rfc8949/types/tags"
@@ -19,7 +20,7 @@ import (
 // A nil *url.URL returns an error.
 func Marshal(value *url.URL) ([]byte, error) {
 	if nil == value {
-		return nil, fmt.Errorf("rfc8949: nil *url.URL")
+		return nil, erorr.Errorf("rfc8949: nil *url.URL")
 	}
 
 	return tags.Marshal(tagnumber.URI, value.String())
